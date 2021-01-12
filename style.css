@@ -1,0 +1,197 @@
+html, body{
+    height: 100%;
+}
+
+body{
+    text-align: center;
+    font-family: 'Acme', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+}
+
+footer{
+    margin: 10px 0;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    color:rgb(129, 129, 129);
+}
+
+footer p{
+    margin: 0;
+    margin-top: 5px;
+}
+
+h1{
+    margin: 0 0 5px 0;
+    font-size: 3rem;
+}
+
+#lost{
+    position: absolute;
+    width: 400px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 250px;
+    font-size: 5rem;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+#board{
+    background: #666;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 5px;
+}
+
+button{
+    display: block;
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+    font-family: 'Acme', sans-serif;
+    border-radius: 10px;
+    transition: 0.4s;
+    top: 0;
+}
+
+button:hover{
+    background-color: rgb(241, 97, 97);
+    transform: scale(1.1);
+}
+
+.size-btn{
+    margin: 20px;
+    font-size: 1.5rem;;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+}
+
+
+#again{
+    width: 400px;
+    height: 100px;
+    font-size: 4rem;
+}
+
+#highscores{
+    width: 200px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+#highscores-list{
+    width: 150px;
+    margin: auto;
+    padding: 0;
+    text-align: left;
+    margin-bottom: 30px;
+    margin-left: calc(50% - 30px);
+}
+
+footer{
+    flex-shrink: 0;
+}
+
+.row{
+    overflow: auto;
+}
+
+.tile{
+    background: rgb(240, 217, 169);
+    border-radius: 4px;
+    color: #000;
+    float: left;
+    font-size: 50px;
+    height: 100px;
+    line-height: 100px;
+    margin: 5px;
+    text-align: center;
+    width: 100px;
+}
+
+.tile-2{
+    background: #eee;
+}
+
+.tile-4{
+    background: #ccc;
+}
+
+.tile-8{
+    background: rgb(255, 159, 69);
+}
+
+.tile-16{
+    background: rgb(253, 136, 27);
+}
+
+.tile-32{
+    background: rgb(219, 96, 96);
+}
+
+.tile-64{
+    background: rgb(240, 22, 22);
+}
+
+.tile-128{
+    background: rgb(240, 226, 101);
+    font-size: 45px;
+}
+
+.tile-256{
+    background: rgb(226, 195, 58);
+    font-size: 45px;
+}
+
+.tile-512{
+    background: rgb(223, 193, 27);
+    font-size: 45px;
+}
+
+.tile-1024{
+    background: rgb(233, 200, 16);
+    font-size: 35px;
+}
+
+.tile-2048{
+    background: rgb(240, 204, 0);
+    font-size: 35px;
+}
+
+.tile-4096{
+    background: rgb(21, 247, 0);
+    font-size: 35px;
+}
+
+.tile-8192{
+    background: rgb(212, 0, 255);
+    font-size: 35px;
+}
+
+.tile-16384{
+    background: rgb(0, 225, 255);
+    font-size: 30px;
+}
+
+.tile-32768{
+    background: rgb(25, 0, 255);
+    font-size: 30px;
+}
+
+.tile-65536{
+    background: rgb(255, 0, 76);
+    font-size: 30px;
+}
