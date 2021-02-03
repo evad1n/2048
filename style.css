@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+     padding: 0;
+}
+
 html, body{
     height: 100%;
 }
@@ -34,14 +39,21 @@ h1{
     font-size: 3rem;
 }
 
+#score {
+    margin: 0;
+    margin-top: 10px;
+}
+
 #lost{
     position: absolute;
+    z-index: 5;
     width: 400px;
     margin: auto;
     left: 0;
     right: 0;
     top: 250px;
     font-size: 5rem;
+    color: red;
 }
 
 main{
@@ -81,24 +93,9 @@ button:hover{
 
 
 #again{
-    width: 400px;
-    height: 100px;
+    display: flex;
+    padding: 5px 20px;
     font-size: 4rem;
-}
-
-#highscores{
-    width: 200px;
-    height: 50px;
-    font-size: 1.5rem;
-}
-
-#highscores-list{
-    width: 150px;
-    margin: auto;
-    padding: 0;
-    text-align: left;
-    margin-bottom: 30px;
-    margin-left: calc(50% - 30px);
 }
 
 footer{

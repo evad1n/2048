@@ -2,7 +2,7 @@ var board = {};
 
 boardDiv = document.querySelector("#board");
 again = document.querySelector("#again");
-scoreSpan = document.querySelector("#score");
+scoreSpan = document.querySelector("#score").children[0];
 lossText = document.querySelector("#lost");
 decreaseBtn = document.querySelector("#decrease-size");
 increaseBtn = document.querySelector("#increase-size");
@@ -22,59 +22,59 @@ document.onkeydown = keyInput;
 decreaseBtn.onclick = decreaseSize;
 increaseBtn.onclick = increaseSize;
 
-document.addEventListener('touchstart', handleTouchStart, false);        
+document.addEventListener('touchstart', handleTouchStart, false);
 document.addEventListener('touchmove', handleTouchMove, false);
 
-var xDown = null;                                                        
+var xDown = null;
 var yDown = null;
 
 function getTouches(evt) {
-  return evt.touches ||             // browser API
-         evt.originalEvent.touches; // jQuery
-}                                                     
+    return evt.touches ||             // browser API
+        evt.originalEvent.touches; // jQuery
+}
 
 function handleTouchStart(evt) {
-    const firstTouch = getTouches(evt)[0];                                      
-    xDown = firstTouch.clientX;                                      
-    yDown = firstTouch.clientY;                                      
-};                                                
+    const firstTouch = getTouches(evt)[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
+};
 
 function handleTouchMove(evt) {
-    if ( ! xDown || ! yDown ) {
+    if (!xDown || !yDown) {
         return;
     }
 
-    var xUp = evt.touches[0].clientX;                                    
+    var xUp = evt.touches[0].clientX;
     var yUp = evt.touches[0].clientY;
 
     var xDiff = xDown - xUp;
     var yDiff = yDown - yUp;
 
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-        if ( xDiff > 0 ) {
-            /* left swipe */ 
-moveLeft()
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {/*most significant*/
+        if (xDiff > 0) {
+            /* left swipe */
+            moveLeft();
         } else {
             /* right swipe */
-moveRight()
-        }                       
+            moveRight();
+        }
     } else {
-        if ( yDiff > 0 ) {
-            /* up swipe */ 
-moveUp()
-        } else { 
+        if (yDiff > 0) {
+            /* up swipe */
+            moveUp();
+        } else {
             /* down swipe */
-moveDown()
-        }                                                                 
+            moveDown();
+        }
     }
     /* reset values */
     xDown = null;
-    yDown = null;                                             
+    yDown = null;
 };
 
 //run game
 board = JSON.parse(localStorage.getItem("board"));
-if(board != null) {
+if (board != null) {
     createBoard();
 }
 else {
@@ -222,61 +222,61 @@ function keyInput(key) {
 }
 
 function moveUp() {
-for (var col = 0; col < boardSize; col++) {
-                var newCol = combine(getCol(col, false), true);
+    for (var col = 0; col < boardSize; col++) {
+        var newCol = combine(getCol(col, false), true);
 
-                deleteCol(col);
+        deleteCol(col);
 
-                for (var row = 0; row < newCol.length; row++) {
-                    var newKey = tileKey(col, row);
-                    board[newKey] = newCol[row];
-                }
-            }
+        for (var row = 0; row < newCol.length; row++) {
+            var newKey = tileKey(col, row);
+            board[newKey] = newCol[row];
+        }
+    }
 }
 
 function moveDown() {
-for (var col = 0; col < boardSize; col++) {
-                var newCol = combine(getCol(col, true), true);
+    for (var col = 0; col < boardSize; col++) {
+        var newCol = combine(getCol(col, true), true);
 
-                deleteCol(col);
+        deleteCol(col);
 
-                for (var row = (boardSize - 1); row > (boardSize - 1) - newCol.length; row--) {
-                    var newKey = tileKey(col, row);
-                    board[newKey] = newCol[(boardSize - 1) - row];
-                }
-            }
+        for (var row = (boardSize - 1); row > (boardSize - 1) - newCol.length; row--) {
+            var newKey = tileKey(col, row);
+            board[newKey] = newCol[(boardSize - 1) - row];
+        }
+    }
 }
 
 function moveLeft() {
-for (var row = 0; row < boardSize; row++) {
-                var newRow = combine(getRow(row, false), true);
+    for (var row = 0; row < boardSize; row++) {
+        var newRow = combine(getRow(row, false), true);
 
-                deleteRow(row);
+        deleteRow(row);
 
-                for (var col = 0; col < newRow.length; col++) {
-                    var newKey = tileKey(col, row);
-                    board[newKey] = newRow[col];
-                }
-            }
+        for (var col = 0; col < newRow.length; col++) {
+            var newKey = tileKey(col, row);
+            board[newKey] = newRow[col];
+        }
+    }
 }
 
 function moveRight() {
-for (var row = 0; row < boardSize; row++) {
-                var newRow = combine(getRow(row, true), true);
+    for (var row = 0; row < boardSize; row++) {
+        var newRow = combine(getRow(row, true), true);
 
-                deleteRow(row);
+        deleteRow(row);
 
-                for (var col = (boardSize - 1); col > (boardSize - 1) - newRow.length; col--) {
-                    var newKey = tileKey(col, row);
-                    board[newKey] = newRow[(boardSize - 1) - col];
-                }
-            }
+        for (var col = (boardSize - 1); col > (boardSize - 1) - newRow.length; col--) {
+            var newKey = tileKey(col, row);
+            board[newKey] = newRow[(boardSize - 1) - col];
+        }
+    }
 }
 
 function deleteRow(row) {
     for (var i = 0; i < boardSize; i++) {
         var oldKey = tileKey(i, row);
-        var tile = document.querySelector("#" + oldKey)
+        var tile = document.querySelector("#" + oldKey);
         board[oldKey] = null;
     }
 }
@@ -284,7 +284,7 @@ function deleteRow(row) {
 function deleteCol(col) {
     for (var i = 0; i < boardSize; i++) {
         var oldKey = tileKey(col, i);
-        var tile = document.querySelector("#" + oldKey)
+        var tile = document.querySelector("#" + oldKey);
         board[oldKey] = null;
     }
 }
@@ -335,7 +335,7 @@ function availableCells() {
         }
     }
 
-    return cells
+    return cells;
 }
 
 //game logic to combine numbers
